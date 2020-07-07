@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        Open modal
+      </button>
+
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p style="text-align: center;font-size: 30px;">Đổi mật khẩu</p>
+                    <li style="list-style: none;display: flex; margin-left: 10%;margin-bottom: 20px;">
+                        <p>Username</p>
+                        <input type="text" name="username" id="username" style="margin-left: 10px;height: 35px;width: 250px;">
+                    </li>
+                    <li style="list-style: none;display: flex;margin-left: 10%;margin-bottom: 20px;">
+                        <p>Password</p>
+                        <input type="password" name="password" id="password" style="margin-left: 15px;height: 35px;width: 250px;">
+                    </li>
+                    <li style="list-style: none;display: flex;margin-left: 5%;">
+                        <p>Confirm Pass</p>
+                        <input type="password" name="confirm_pass" id="confirm_pass" style="margin-left: 15px;height: 35px;width: 250px;">
+                    </li>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

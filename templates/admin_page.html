@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin cá nhân</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <!-- Chart by js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/alter.css') }}">
+</head>
+
+<body>
+    <nav class="container-fluid navbar navbar-expand-sm  row top-web">
+
+        <div class='col-4 name-website pl-2'>
+            <img src="{{ url_for('static', filename='icons/signs.png') }}" alt="" srcset="">
+            <span class='pl-3'>Thông tin cá nhân</span>
+        </div>
+
+        <div class="">
+
+        </div>
+    </nav>
+    <div class='container-fluid include row pr-0'>
+
+        <div class=' left  menu-left  col-2 pr-0' style="margin-right: 0px; background-color: rgb(21, 32, 54);">
+
+            <ul nav flex-column>
+                <li class="nav-item" style="border-top:1px solid #34495e;">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                    <a class="nav-link  " href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <a id='ttcn' class="nav-link" href="#">Thông tin cá nhân</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    <a id='taotk' class="nav-link" href="">Tạo tài khoản nhân viên</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                    <a id='quanly' class="nav-link " href="">Quản lý nhân viên</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                    <a id='quanlykh' class="nav-link " href="">Quản lý khách hàng</a>
+                </li>
+
+                <li class="nav-item">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    <a class="nav-link disabled" href="#">Setting</a>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class='main-infor col-10  row m-0 p-0' style="background-color: #273c75; min-height: 630px;">
+
+            <div class='left-infor col-4  m-0 p-0' style="text-align: center;">
+
+                <h5 style="color: aliceblue; margin-top: 20px;">PROFESSIONAL DETAILS</h5>
+
+                <div class="card" style="width: 86%; margin-left: 7%;">
+                    <img class="card-img-top" src="{{ data[18] }}" alt="Card image cap" style="max-height:300px; ">
+                    <div class="card-body">
+
+                        <div class='row'>
+
+                            <div class='col-5 '>
+
+                                <ul class="infor_menu">
+
+                                    <li>NAME</li>
+
+                                    <li>DOB</li>
+
+                                    <li>LOCATION</li>
+
+                                    <li>COTACT</li>
+
+                                    <li>EMAIL</li>
+
+                                    <li>EXPERIENCE</li>
+
+
+                                </ul>
+
+                            </div>
+
+                            <div class='col-7 '>
+                                <ul class="infor_menu">
+
+                                    <li>{{ data[1] }}</li>
+
+                                    <li>{{ data[7] }} </li>
+
+                                    <li>{{ data[3] }}</li>
+
+                                    <li>{{ data[9] }}</li>
+
+                                    <li>{{ data[8] }}</li>
+
+                                    <li>{{ data[16] }} years</li>
+
+                                </ul>
+                            </div>
+
+                        </div>
+                        <button type="button" class="btn_edit btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                            EDIT RESUME
+                        </button>
+                        <!-- <button type="button" class="btn_edit" data-toggle="modal" data-target="#exampleModalLong"></button> -->
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Edit Infor</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1" style="float: left;">Email address</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1" style="float: left;">Phone number</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1" style="float: left;">Password</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1" style="float: left;">Repeat Password</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" id='btn_save'>Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class='col-8 right-infor  m-0 p-0'>
+
+                <div class='calendar-all' style="width: 70%; margin-left: 14%;">
+
+                    <div class='dog container-fluid' style="width: 100%; display: flex;">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                        <span>July - 2020</span>
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </div>
+                    <div class='row  calendar m-0 container-fluid '>
+                        <div class='col-2'>
+                            <span style="{{ data[-34] }}">1</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-33] }}">2</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-32] }}">3</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-31] }}">4</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-30] }}">5</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-29] }}">6</span>
+                        </div>
+                    </div>
+
+                    <div class='row calendar container-fluid'>
+                        <div class='col-2'>
+                            <span style="{{ data[-28] }}">7</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-27] }}">8</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-26] }}">9</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-25] }}">10</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-24] }}">11</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-23] }}">12</span>
+                        </div>
+                    </div>
+                    <div class='row calendar container-fluid'>
+                        <div class='col-2'>
+                            <span style="{{ data[-22] }}">13</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-21] }}">14</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-20] }}">15</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-19] }}">16</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-18] }}">17</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-17] }}">18</span>
+                        </div>
+                    </div>
+                    <div class='row calendar container-fluid'>
+                        <div class='col-2'>
+                            <span style="{{ data[-16] }}">19</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-15] }}">20</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-14] }}">21</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-13] }}">22</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-12] }}">23</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-11] }}">24</span>
+                        </div>
+                    </div>
+                    <div class='row calendar container-fluid'>
+                        <div class='col-2'>
+                            <span style="{{ data[-10] }}">25</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-9] }}">26</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-8] }}">27</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-7] }}">28</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-6] }}">29</span>
+                        </div>
+                        <div class='col-2'>
+                            <span style="{{ data[-5] }}">30</span>
+                        </div>
+                    </div>
+                    <div class='row calendar container-fluid'>
+                        <div class='col-2'>
+                            <span style="{{ data[-4] }}">31</span>
+                        </div>
+                        <div class='col-2 '>
+                            <span style=" background-color: rgb(50,51,104); ">1</span>
+                        </div>
+                        <div class='col-2 '>
+                            <span style="background-color: rgb(50,51,104); ">2</span>
+                        </div>
+                        <div class='col-2 '>
+                            <span style="background-color: rgb(50,51,104); ">3</span>
+                        </div>
+                        <div class='col-2 '>
+                            <span style="background-color: rgb(50,51,104); ">4</span>
+                        </div>
+                        <div class='col-2 '>
+                            <span style="background-color: rgb(50,51,104); ">5</span>
+                        </div>
+
+
+                    </div>
+                    <div class='cat mt-3 ' style="color: honeydew; ">
+
+                        <div class="ml-3 " style="display: flex; ">
+                            <span class='ml-3 mr-3 x1 ' style="width: 100px; background-color: red; ">MUỘN</span>
+                            <span class="mr-5 ">{{data[-1]}}</span>
+
+                            <span class='ml-5 mr-3 x1 ' style="width: 100px; background-color: #e67e22; ">ĐIỂM</span>
+                            <span>{{data[15]}} points</span>
+                        </div>
+
+
+                        <div class='mt-3 mb-4 ml-3 ' style="display: flex; ">
+                            <span class='ml-3 mr-3 x1' style="width: 100px; background-color: green; ">SÔ NGÀY</span>
+                            <span>{{data[-2]}}</span>
+
+                        </div>
+
+                        <div class='mt-3 mb-4 ml-3 ' style="display: flex; ">
+                            <span class='ml-3 mr-3 x1' style=" width: 100px; background-color: yellow; margin-left: 20px; ">PHÚT MUỘN</span>
+                            <span>{{data[-3]}} mins</span>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        $(document).ready(function() {
+
+            $("#ttcn").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/admin-page/' + id_nv;
+
+                $("#ttcn").attr("href", url);
+
+            });
+
+            $("#taotk").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/create_employe/' + id_nv;
+
+
+
+                $("#taotk").attr("href", url);
+
+            });
+
+            $("#quanly").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/quanly/' + id_nv;
+
+
+
+                $("#quanly").attr("href", url);
+
+            });
+
+            $("#taohoso").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/taohoso/' + id_nv;
+
+
+
+                $("#taohoso").attr("href", url);
+
+            });
+
+            $("#quanly").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/danhba/' + id_nv;
+
+                $("#quanly").attr("href", url);
+
+            });
+
+            $("#quanlykh").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/danhbaKH/' + id_nv;
+
+                $("#quanlykh").attr("href", url);
+
+            });
+
+
+
+        });
+    </script>
+
+</body>
+
+</html>

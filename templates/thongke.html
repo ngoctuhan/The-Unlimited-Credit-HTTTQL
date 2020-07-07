@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thống kê</title>
+    <link rel="icon" type="static/ico" href="{{ url_for('static', filename='icons/signs.png') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lanh.css') }}">
+    <!-- Chart by js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+</head>
+
+<body>
+    <script>
+        class TableCSVExporter {
+            constructor(table, includeHeaders = true) {
+                this.table = table;
+                this.rows = Array.from(table.querySelectorAll("tr"));
+
+                if (!includeHeaders && this.rows[0].querySelectorAll("th").length) {
+                    this.rows.shift();
+                }
+            }
+
+            convertToCSV() {
+                const lines = [];
+                const numCols = this._findLongestRowLength();
+
+                for (const row of this.rows) {
+                    let line = "";
+
+                    for (let i = 0; i < numCols; i++) {
+                        if (row.children[i] !== undefined) {
+                            line += TableCSVExporter.parseCell(row.children[i]);
+                        }
+
+                        line += (i !== (numCols - 1)) ? "," : "";
+                    }
+
+                    lines.push(line);
+                }
+
+                return lines.join("\n");
+            }
+
+            _findLongestRowLength() {
+                return this.rows.reduce((l, row) => row.childElementCount > l ? row.childElementCount : l, 0);
+            }
+
+            static parseCell(tableCell) {
+                let parsedValue = tableCell.textContent;
+
+                // Replace all double quotes with two double quotes
+                parsedValue = parsedValue.replace(/"/g, `""`);
+
+                // If value contains comma, new-line or double-quote, enclose in double quotes
+                parsedValue = /[",\n]/.test(parsedValue) ? `"${parsedValue}"` : parsedValue;
+
+                return parsedValue;
+            }
+        }
+        $('document').ready(function() {
+
+            $("#ttcn").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/staff/' + id_nv;
+
+                $("#ttcn").attr("href", url);
+
+            });
+
+            $("#taohopdong").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/taohopdong/' + id_nv;
+
+
+
+                $("#taohopdong").attr("href", url);
+
+            });
+
+            $("#thongke").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/thongke/' + id_nv;
+
+
+
+                $("#thongke").attr("href", url);
+
+            });
+            $("#taohoso").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/taohoso/' + id_nv;
+
+
+
+                $("#taohoso").attr("href", url);
+
+            });
+            var ctx = document.getElementById('line_chart').getContext('2d');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line',
+
+                // The data for our dataset
+                data: {
+                    labels: ['19/03', '20/03', '21/03', '22/03', '23/03', '24/03', '25/03'],
+                    datasets: [{
+                        label: 'Thẻ tín dụng',
+                        // backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(230, 126, 34)',
+                        data: [0, 10, 5, 2, 20, 30, 45]
+                    }, {
+                        label: 'Vay tín dụng',
+                        // backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(52, 152, 219)',
+                        data: [20, 30, 70, 90, 100, 120, 145]
+                    }]
+                },
+
+                // Configuration options go here
+                options: {
+                    legend: {
+                        labels: {
+                            fontColor: '#ffff'
+                        }
+                    },
+                    title: {
+                        fontColor: '#ffff'
+                    }
+                }
+            });
+
+            var ctx2 = document.getElementById('bar_chart').getContext('2d');
+            var myBarChart = new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: ['19/03', '20/03', '21/03', '22/03', '23/03', '24/03', '25/03'],
+                    datasets: [{
+                        label: 'Thẻ tín dụng',
+                        backgroundColor: 'rgb(230, 126, 34',
+                        borderColor: 'rgb(230, 126, 34)',
+                        data: [0, 10, 5, 2, 20, 30, 45]
+                    }, {
+                        label: 'Vay tín dụng',
+                        backgroundColor: 'rgb(52, 152, 219)',
+                        borderColor: 'rgb(52, 152, 219)',
+                        data: [20, 30, 70, 90, 100, 120, 145]
+                    }, {
+                        label: 'Vay trả góp',
+                        backgroundColor: 'rgb(231, 76, 60)',
+                        borderColor: 'rgb(231, 76, 60)',
+                        data: [60, 30, 70, 10, 5, 45, 90]
+                    }]
+                },
+                options: {}
+            });
+            const dataTable = document.getElementById("table_tk");
+            const btnExportToCsv = document.getElementById("btnExport");
+
+            btnExportToCsv.addEventListener("click", () => {
+                const exporter = new TableCSVExporter(dataTable);
+                const csvOutput = "\ufeff" + exporter.convertToCSV();
+                const csvBlob = new Blob([csvOutput], {
+                    type: "text/csv;charset=UTF-8"
+                });
+                const blobUrl = URL.createObjectURL(csvBlob);
+                const anchorElement = document.createElement("a");
+
+                anchorElement.href = blobUrl;
+                anchorElement.download = "thongke.csv";
+                anchorElement.click();
+
+                setTimeout(() => {
+                    URL.revokeObjectURL(blobUrl);
+                }, 500);
+            });
+            $('#exampleFormControlSelect1').on('change', function() {
+                let curr = window.location.href;
+                curr = curr.split('/');
+                let id_nv = curr[curr.length - 1];
+                let hd = $("#exampleFormControlSelect1 option:selected").text();
+                hd += " " + id_nv;
+                $.ajax({
+                    type: "POST",
+                    url: "/datathongke",
+                    data: {
+                        hopdong: hd
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        $("#tbody").empty();
+                        var tmp_data = response['data']
+                        for (let row_data in tmp_data) {
+                            var tmp_list = response['data'][row_data];
+                            var new_element = '<td> ' + tmp_list[0] + ' </td>';
+                            new_element += '<td> ' + tmp_list[1] + ' </td>';
+                            new_element += '<td> ' + tmp_list[2] + ' </td>';
+                            new_element += '<td> ' + tmp_list[3] + ' </td>';
+                            new_element += '<td> ' + tmp_list[4] + ' </td>';
+                            new_element += '<td> ' + tmp_list[5] + ' </td>';
+                            new_element = '<tr style="background-color: #273c75;">' + new_element;
+                            new_element += '</tr>';
+                            $("#tbody").append(new_element);
+                        }
+                    }
+
+                });
+            });
+        });
+    </script>
+    <nav class="container-fluid navbar navbar-expand-sm  row top-web">
+
+        <div class='col-4 name-website pl-2'>
+            <img src="{{ url_for('static', filename='icons/signs.png') }}" alt="" srcset="">
+            <span class="pl-3">Thống kê doanh thu</span>
+        </div>
+    </nav>
+    <div class='container-fluid include row pr-0'>
+
+        <div class=' left  menu-left  col-2 pr-0' style="margin-right: 0px;">
+
+            <ul nav flex-column>
+                <li class="nav-item" style="border-top:1px solid #34495e;">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                    <a class="nav-link  " href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <a id='ttcn' class="nav-link" href="#">Thông tin cá nhân</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    <a id='taohopdong' class="nav-link" href="">Tạo hợp đồng trả góp</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                    <a id='thongke' class="nav-link " href="">Thống kê</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-address-book" aria-hidden="true"></i>
+                    <a id='taohoso' class="nav-link " href="#">Tạo hồ sơ khách hàng</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-credit-card" aria-hidden="true"></i>
+                    <a id='thetindung' class="nav-link " href="#">Mở thẻ tính dụng</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    <a class="nav-link disabled" href="#">Setting</a>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class=' menu-right col-10 p-0 m-0'>
+
+            <div class='row infor_all m-0 mt-5'>
+
+                <div class='col-md-6 col-xl-4  p-0'>
+
+                    <div class='card wrap_content border ' style="background-color: #273c75;">
+                        <div class="cnt-card card-body m-0 p-2 ">
+                            <div class='left-card' style="float: left;">
+                                <h4 class="card-title">Vay tín dụng</h4>
+                                <p class="card-text">Doanh thu vay tín dụng</p>
+                            </div>
+                            <div class='right-card pt-3 ' style="text-align: center;">
+                                <h2>134</h2>
+                                <!-- <h4>/117</h4> -->
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class='col-md-6 col-xl-4 p-0'>
+                    <div class='card wrap_content border' style="background-color: #e84118;">
+
+                        <div class="cnt-card card-body m-0 p-2">
+
+                            <div class='left-card' style="float: left;">
+                                <h4 class="card-title">Vay trả góp</h4>
+                                <p class="card-text">Doanh thu vay trả góp</p>
+                            </div>
+                            <div class='right-card pt-3 ' style="text-align: center;">
+                                <h2>0</h2>
+                                <!-- <h4>/117</h4> -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-md-6 col-xl-4 p-0'>
+                    <div class='card wrap_content border' style="background-color: #f1c40f;">
+                        <div class="cnt-card card-body m-0 p-2">
+                            <div class='left-card' style="float: left;">
+                                <h4 class="card-title">Thẻ tín dụng</h4>
+                                <p class="card-text">Doanh thu thẻ tín dụng</p>
+                            </div>
+                            <div class='right-card pt-3 ' style="text-align: center;">
+                                <h2>17</h2>
+                                <!-- <h4>/117</h4> -->
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class='graph row ml-0' style="min-height: 200px;">
+                <div class='show_canvas col-md-6 pl-0 pr-0'>
+                    <canvas id='bar_chart' class='border' style="width: 98%;height: 350px; margin-left:10px;color: #ffff;"></canvas>
+                </div>
+
+                <div class='show_canvas col-md-6 pr-0'>
+                    <canvas id='line_chart' class='border ' style="width: 98%;height: 350px; color:#ffff;"></canvas>
+                </div>
+            </div>
+
+            <div class="row  pl-0 ml-0 mt-5 mr-0 pr-0">
+                <div class='col-md-12 mb-4  mr-0' style="padding-left: 10px; padding-right: 12px;">
+                    <div class='card ' style="margin-left: 15px; margin-right: 12px; ">
+                        <div class='card-header mr-0' style="background-color: #273c75; height: 56px">
+                            <span style="padding-left: 25px; font-size: 20px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: 550;
+                            color: #ffff;">BẢNG THỐNG KÊ</span>
+                            <div class="form-group" style="float: right; height: 38px">
+                                <select class="form-control" id="exampleFormControlSelect1" style="height: 38px">
+                                    <option >Tháng 1</option>
+                                    <option >Tháng 2</option>
+                                    <option >Tháng 3</option>
+                                    <option >Tháng 4</option>
+                                    <option >Tháng 5</option>
+                                    <option >Tháng 6</option>
+                                    <option >Tháng 7</option>
+                                    <option >Tháng 8</option>
+                                    <option >Tháng 9</option>
+                                    <option >Tháng 10</option>
+                                    <option >Tháng 11</option>
+                                    <option >Tháng 12</option>
+                                </select>
+                            </div>
+                        </div>
+                        <table id="table_tk" class='table table-striped mb-0' style="color:  #ffff; text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;background-color: #273c75;">
+                            <thead style="background-color: #487eb0;">
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Họ và tên</th>
+                                    <th>CMND</th>
+                                    <th>Email</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Hạn mức (đồng)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody">
+                                {%for row in data %}
+                                <tr style="background-color: #273c75;">
+                                    <td>{{row[0]}}</td>
+                                    <td>{{row[1]}}</td>
+                                    <td>{{row[2]}}</td>
+                                    <td>{{row[3]}}</td>
+                                    <td>{{row[4]}}</td>
+                                    <td>{{row[5]}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <button id="btnExport" style="background-color: #487eb0; height: 40px; margin-left: 963px;"><a href=""
+                        style="color: #ffff; font-size: bolt">Xuất file thống kê</a></button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

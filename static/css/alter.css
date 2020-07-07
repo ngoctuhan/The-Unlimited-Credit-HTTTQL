@@ -1,0 +1,88 @@
+li {
+    list-style: none;
+}
+
+.infor_menu li {
+    /* float: left; */
+    width: 100%;
+    text-align: left;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    margin-left: 15px;
+    margin-bottom: 7px;
+}
+
+.btn_edit {
+    width: 60%;
+    height: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    outline: none;
+    background-color: #2980b9;
+    cursor: pointer;
+    border-radius: 5px;
+    color: aliceblue;
+    border: none;
+}
+
+
+/* chọn tháng */
+
+.calendar {
+    margin: 0px;
+}
+
+.calendar span {
+    color: aliceblue;
+    display: block;
+    /* border: 1px solid; */
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 600px;
+    padding-top: 6px;
+    /* background-color: #a29bfe; */
+    background-color: rgb(0, 80, 133);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.calendar div {
+    /* border: 1px solid cornsilk; */
+    height: 60px;
+    text-align: center;
+    background-color: rgb(0, 64, 122);
+}
+
+.dog {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 50px;
+    text-align: center;
+    margin-left: 25%;
+}
+
+.dog i {
+    font-size: 20px;
+    color: cornsilk;
+    padding: 6px;
+    cursor: pointer;
+}
+
+.dog span {
+    font-size: 20px;
+    color: cornsilk;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.cat span {
+    font-weight: 600;
+}
+
+.cat .x1 {
+    /* padding-left: 10px; */
+    text-align: center;
+}

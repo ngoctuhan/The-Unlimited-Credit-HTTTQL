@@ -1,0 +1,47 @@
+#slider {
+    margin: 0px auto;
+    width: 100%;
+    height: 400px;
+}
+
+.image {
+    width: 100%;
+    height: 400px;
+}
+
+#prev {
+    text-transform: uppercase;
+    top: 250px;
+    left: 30px;
+    position: absolute;
+}
+
+#next {
+    text-transform: uppercase;
+    top: 250px;
+    right: 30px;
+    position: absolute;
+}
+
+#iconprev {
+    font-size: 40px;
+    color: #000;
+}
+
+#iconnext {
+    font-size: 40px;
+    color: #000;
+}
+
+#purpose {
+    width: 100%;
+    height: 60px;
+    background-color: #EE0000
+}
+
+#text {
+    font-size: 25px;
+    color: white;
+    padding-left: 30%;
+    padding-top: 10px;
+}

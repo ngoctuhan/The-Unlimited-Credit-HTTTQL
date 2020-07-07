@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlimidted</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script type=”text/javascript” src=”http://code.jquery.com/jquery-2.0.3.min.js”></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/img.css') }}">
+    <script src="{{ url_for('static', filename='js/img.js') }}"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light  border" style="background-color:#EE0000   ">
+        <a class="navbar-brand" href="#" style="font-weight: 700;color: white;">The Unlimited</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto list-item-nav" style="font-weight: 600;">
+                <li class="nav-item mr-4">
+                    <a class="nav-link" href="http://192.168.16.100:5000/thanhtoan/{{id}}" style="color: white;">Thanh toán</a>
+                </li>
+                <li class="nav-item mr-4">
+                    <div class="btn-group nav-link">
+                        <a type="button" style="color: white;">
+                            Tư vấn và tra cứu
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item mr-4">
+                    <div class="btn-group nav-link">
+                        <a type="button" class=" dropdown-toggle" data-toggle="dropdown" style="color: white;">
+                        Tin tức
+                        </a>
+                        <div class="dropdown-menu" style="background-color:#EE0000   ">
+                            <a class="dropdown-item" href="#" style="color: white;">Khuyến mãi</a>
+                            <a class="dropdown-item" href="#" style="color: white;">Tin tức truyền thông</a>
+                            <a class="dropdown-item" href="#" style="color: white;">Video, clip</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item mr-4">
+                    <div class="btn-group nav-link">
+                        <a type="button" class=" dropdown-toggle" data-toggle="dropdown" style="color: white;">
+                        Về chúng tôi
+                        </a>
+                        <div class="dropdown-menu" style="background-color:#EE0000   ">
+                            <a class="dropdown-item" href="#" style="color: white;">Liên hệ</a>
+                            <a class="dropdown-item" href="#" style="color: white;">Tuyển dụng</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item active mr-4">
+                    <a class="nav-link" type="button" href="#" data-toggle="modal" data-target="#myModal" style="color: white;">Đổi mật khẩu</a>
+                    <div class="modal" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <p style="text-align: center;font-size: 30px;">Đổi mật khẩu</p>
+                                    <li style="list-style: none;display: flex; margin-left: 10%;margin-bottom: 20px;">
+                                        <p>Username</p>
+                                        <input type="text" name="username" id="username" style="margin-left: 10px;height: 35px;width: 250px;">
+                                    </li>
+                                    <li style="list-style: none;display: flex;margin-left: 10%;margin-bottom: 20px;">
+                                        <p>Password</p>
+                                        <input type="password" name="password" id="password" style="margin-left: 15px;height: 35px;width: 250px;">
+                                    </li>
+                                    <li style="list-style: none;display: flex;margin-left: 5%;">
+                                        <p>Confirm Pass</p>
+                                        <input type="password" name="confirm_pass" id="confirm_pass" style="margin-left: 15px;height: 35px;width: 250px;">
+                                    </li>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <section>
+
+        <div class="container1">
+            <div id="slider">
+                <img class="image" src="{{ url_for('static', filename='img/img6.png') }}" alt="" stt="0">
+                <img class="image" src="{{ url_for('static', filename='img/img4.jpg') }}" alt="" stt="1" style="display: none;">
+                <img class="image" src="{{ url_for('static', filename='img/img1.jpg') }}" alt="" stt="2" style="display: none;">
+                <img class="image" src="{{ url_for('static', filename='img/img3.jpg') }}" alt="" stt="3" style="display: none;">
+                <img class="image" src="{{ url_for('static', filename='img/img5.jpg') }}" alt="" stt="4" style="display: none;">
+                <img class="image" src="{{ url_for('static', filename='img/img7.jpg') }}" alt="" stt="5" style="display: none;">
+                <a href="#" id="prev"><i id="iconprev" class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                <a href="#" id="next"><i id="iconnext" class="fa fa-arrow-right" aria-hidden="true"></i>
+                </a>
+            </div>
+
+            <div id="purpose">
+                <p id="text">LÍ DO CHỌN THẺ TÍN DỤNG CỦA THE UNLIMITED</p>
+            </div>
+            <div id="content">
+                <div style="display: flex; ">
+
+                    <div style="border-radius: 125px;background-color:#EEEEEE;height: 230px;width:230px;margin-top: 30px;margin-left: 20%;">
+                        <img src=" {{ url_for('static', filename='img/ico-30mins.png') }}" alt="" style="width: 130px;height: 90px;margin-top: 30px; margin-left: 50px;">
+                        <p style="margin-left: 60px;text-align: center;width: 120px;margin-top: 20px;">
+                            Duyệt nhanh, thủ tục đơn giản
+                        </p>
+                    </div>
+                    <div style="border-radius: 125px;background-color:#EEEEEE;height: 230px;width:230px;margin-top: 30px;margin-left: 60px;">
+                        <img src="{{ url_for('static', filename='img/ico-45days.png') }}" alt="" style="width: 100px;height: 100px;margin-top: 30px; margin-left: 65px;">
+                        <p style="margin-left: 60px;text-align: center;width: 120px;margin-top: 20px;">
+                            Miễn lãi suất đến 45 ngày
+                        </p>
+                    </div>
+                    <div style="border-radius: 125px;background-color:#EEEEEE;height: 230px;width:230px;margin-top: 30px;margin-left: 60px;">
+                        <img src="{{ url_for('static', filename='img/ico-10percent.png') }}" alt="" style="width: 100px;height: 100px;margin-top: 30px; margin-left: 65px;">
+                        <p style="margin-left: 40px;text-align: center;width: 150px;margin-top: 20px;">
+                            Hoàn tiền lên đến 10% giá trị giao dịch
+                        </p>
+                    </div>
+                </div>
+                <div style="display: flex;">
+                    <div style="border-radius: 125px;background-color:#EEEEEE;height: 230px;width:230px;margin-top: 30px;margin-left: 30%;">
+                        <img src="{{ url_for('static', filename='img/ico-home-credit-zone.png') }}" alt="" style="width: 100px;height: 100px;margin-top: 30px; margin-left: 65px;">
+                        <p style="margin-left: 40px;text-align: center;width: 150px;margin-top: 20px;">
+                            Tiết kiệm hơn với UNLIMITED ZONE
+                        </p>
+                    </div>
+                    <div style="border-radius: 125px;background-color:#EEEEEE;height: 230px;width:230px;margin-top: 30px;margin-left: 80px;">
+                        <img src="{{ url_for('static', filename='img/ico-free.png') }}" alt="" style="width: 100px;height: 100px;margin-top: 30px; margin-left: 65px;">
+                        <p style="margin-left: 40px;text-align: center;width: 150px;margin-top: 20px;">
+                            Miễn phí thường niên năm đầu
+                        </p>
+                    </div>
+                </div>
+                <div style="border-radius: 125px;background-color:#EEEEEE;height: 230px;width:230px;margin-top: 30px;margin-left: 40%;">
+                    <img src="{{ url_for('static', filename='img/mobile.png') }}" alt="" style="width: 60px;height: 100px;margin-top: 30px; margin-left: 85px;">
+                    <p style="margin-left: 30px;text-align: center;width: 170px;margin-top: 20px;">
+                        Quản lí chi tiêu thông minh qua ứng dụng điện thoại
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <div id="footer" style="width: 100%;height: 300px;background-color:#EE0000; margin-top: 20px;">
+        <div class="container mt-5 footer  ">
+            <div class='row'>
+                <div class='col-xl-3 col-sm-6 pt-3 el'>
+                    <span class='tf_name' style="text-align: center; width: 100%; color: white;font-size: 20px;">About us</span>
+                    <p style="color: white;">
+                        Những con ong chăm chỉ cần mẫn học code và không tiến bộ nổi. Ngày qua ngày chúng tôi lại cùng nhau lên mạng lục tung cái google để tìm một cái gì đó cũng không biết nữa. Và kết quả sau bảy bảy bốn chín ngày chúng tôi tu thành chính quả và tạo nên cái
+                        trang web này. Mong các bạn đọc hãy ủng hộ cả team nhé.
+                    </p>
+                </div>
+                <div class="col-xl-3 col-sm-6 pt-3 el" style="text-align: center;">
+
+                    <span class='tf_name' style=" width: 100%; color: white;font-size: 20px;margin-left: 30px;">Support</span>
+                    <ul>
+                        <li style="cursor: pointer;list-style: none;color: white ">
+                            FAQ
+                        </li>
+                        <li style="cursor: pointer;list-style: none;color: white">
+                            Privacy Policy
+                        </li>
+                        <li style=" cursor: pointer;list-style: none;color: white">
+                            Terms
+                        </li>
+                        <li style="cursor: pointer;list-style: none;color: white">
+                            Introduce Team
+                        </li>
+
+                    </ul>
+
+                </div>
+                <div class=" col-xl-3 col-sm-6 pt-3 el " style="text-align: center; ">
+                    <span class='tf_name' style="color: white;font-size: 20px;">My team <i class="fa fa-heart " aria-hidden="true "></i></span>
+
+                    <span style="color: white;font-size: 15px;">The Bug Team</span>
+
+
+                    <ul class='li_img' style="margin-bottom: 70px;">
+
+                        <!-- <img src="img/team/ptit.png" alt=""> -->
+                        <img src="{{ url_for('static', filename='img/trung.jpg') }}" alt="" style="width: 50px;height: 50px;">
+                        <img src="{{ url_for('static', filename='img/viet.jpg') }}" alt="" style="width: 50px;height: 50px;margin-left: 5px;">
+                        <img src="{{ url_for('static', filename='img/lanh.jpg') }}" alt="" style="width: 50px;height: 50px;margin-left: 5px;">
+                        <img src="{{ url_for('static', filename='img/hai.jpg') }}" alt="" style="width: 50px;height: 50px;margin-left: 5px;margin-top: 5px;">
+                        <img src="{{ url_for('static', filename='img/mai.jpg') }}" alt="" style="width: 50px;height: 50px;margin-left: 5px;margin-top: 5px;">
+
+
+                    </ul>
+
+                    <span style="color: white;font-size: 15px;">Copyright ©2020 The Bug Team</span>
+
+                </div>
+
+                <div class="col-xl-3 col-sm-6 pt-3 el " style="text-align: center; ">
+                    <span class='tf_name' style="color: white;font-size: 20px;">Contact</span>
+                    <div class='icon' style="margin-top: 10px;">
+                        <i class="fa fa-facebook fa-lg" aria-hidden="true "></i>
+                        <i class="fa fa-instagram fa-lg" aria-hidden="true " style="margin-left: 15px;"></i>
+                        <i class="fa fa-gitlab fa-lg" aria-hidden="true " style="margin-left: 15px;"></i>
+                        <i class="fa fa-twitter fa-lg" aria-hidden="true " style="margin-left: 15px;"></i>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

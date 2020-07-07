@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/ico" href="icons\signs.png" />
+    <title>Unlimited</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link rel="stylesheet" href="vendors/owl-carousel/owl.theme.default.min.css"> -->
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lanh.css') }}">
+
+</head>
+
+<body>
+
+
+    <nav class="container-fluid navbar navbar-expand-sm  row top-web">
+
+        <div class='col-4 name-website pl-2'>
+            <img src="{{ url_for('static', filename='icons/signs.png') }}" alt="" srcset="">
+            <span class='pl-3'>Thông tin khách hàng</span>
+        </div>
+
+        <div class="">
+
+        </div>
+    </nav>
+    <div class='container-fluid include row pr-0'>
+
+        <div class=' left  menu-left  col-2 pr-0' style="margin-right: 0px; background-color: rgb(21, 32, 54);">
+
+            <ul nav flex-column>
+                <li class="nav-item" style="border-top:1px solid #34495e;">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                    <a class="nav-link  " href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <a id='ttcn' class="nav-link" href="#">Thông tin cá nhân</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    <a id='taotk' class="nav-link" href="">Tạo tài khoản nhân viên</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                    <a id='quanly' class="nav-link " href="">Quản lý nhân viên</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                    <a id='quanlykh' class="nav-link " href="">Quản lý khách hàng</a>
+                </li>
+
+                <li class="nav-item">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    <a class="nav-link disabled" href="#">Setting</a>
+                </li>
+            </ul>
+
+        </div>
+
+
+        <div class='main-infor col-10  row m-0 p-0' style="background-color: #273c75; min-height: 630px;">
+            <div class='container'>
+                <form action="http://192.168.16.100:5000/searchKH/{{id}}" method="POST">
+                    <div class='search_area ml-5 mb-5 mt-5' style="display: flex;">
+                        <input type="text" class="form-control mr-3" id="search" name="search" style="width: 50%;" placeholder="Username/CMND/Họ tên/Số điện thoại">
+                        <button type="submit" class="btn btn-warning" style="width: 150px; ">Search</button>
+
+                    </div>
+                </form>
+                <div class="row ml-3">
+                    <div class='col-lg-10'>
+                        <div class="container">
+
+                            <table class="table table-bordered" style="color: #ffffff;">
+                                <thead>
+                                    <tr>
+                                        <th>Họ tên</th>
+                                        <th>Chứng thực tài sản</th>
+                                        <th>CMTND</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Xem chi tiết</th>
+                                        <th>Deactive</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {%for row in data %}
+                                    <tr>
+                                        <td>{{row[0]}}</td>
+                                        <td>{{row[1]}}</td>
+                                        <td>{{row[2]}}</td>
+                                        <td>{{row[3]}}</td>
+                                        <td><button onclick="linkxct('{{row[4]}}')" class="btn btn-info">Xem chi tiết</button></td>
+                                        {% if row[5] == 1 %}
+                                        <td><button onclick="btn_deactive('{{row[4]}}')" id="{{row[4]}}" type="button" class="btn btn-success">Deactive</button></td>
+                                        {% endif%} {% if row[5] == 0 %}
+                                        <td><button onclick="btn_deactive('{{row[4]}}')" id="{{row[4]}}" type="button" class="btn btn-danger">Active</button></td>
+                                        {% endif%}
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class='col-lg-2  p-4'>
+                        <div class='mid'>
+                            <form action="http://192.168.16.100:5000/updateDBKH/{{id}}" method="POST">
+
+                                <ul style="font-weight: 600;">
+                                    <li class='' style=" cursor: pointer;list-style: none;">
+                                        <div class="form-group">
+                                            <select class="form-control" id="mien" name="mien">
+                                          <option>Bắc</option>
+                                          <option>Trung</option>
+                                          <option>Nam</option>
+                                        </select>
+                                        </div>
+                                    </li>
+
+                                    <li style=" cursor: pointer;list-style: none;">
+                                        <button id="btn_loc" type="submit" class="btn btn-warning" style="width: 80px;">Lọc</button>
+                                    </li>
+
+
+                                </ul>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function linkxct(id) {
+
+            let url = "http://192.168.16.100:5000/xemchitietKH/" + id;
+            window.location = url;
+
+        }
+
+        function btn_deactive(id) {
+            let id_btn = '#' + id;
+            var tmp = $(id_btn).text();
+            if (tmp === 'Active') {
+                $("#btn_act").text("Deactive");
+                tmp = '1 ';
+            } else {
+                $("#btn_act").text("Active");
+                tmp = '0 ';
+            }
+            tmp = tmp + " " + id;
+            $.ajax({
+                type: "POST",
+                url: "/deactiveKH",
+                data: {
+                    khachhang: tmp
+                },
+                dataType: 'json',
+                success: function(response) {
+                    location.reload();
+                }
+            });
+        };
+
+        $(document).ready(function() {
+            $("#ttcn").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/admin-page/' + id_nv;
+
+                $("#ttcn").attr("href", url);
+
+            });
+
+            $("#taotk").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/create_employe/' + id_nv;
+
+
+
+                $("#taotk").attr("href", url);
+
+            });
+
+            $("#quanly").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/quanly/' + id_nv;
+
+
+
+                $("#quanly").attr("href", url);
+
+            });
+
+            $("#taohoso").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/taohoso/' + id_nv;
+
+
+
+                $("#taohoso").attr("href", url);
+
+            });
+
+            $("#quanly").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/danhba/' + id_nv;
+
+                $("#quanly").attr("href", url);
+
+            });
+            $("#quanlykh").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/danhbaKH/' + id_nv;
+
+                $("#quanlykh").attr("href", url);
+
+            });
+
+        });
+    </script>
+</body>
+
+</html>

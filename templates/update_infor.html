@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/ico" href="icons\signs.png" />
+    <title>Unlimited</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <section>
+        <div class='container mt-3 '>
+            <div class="row">
+                <div class='col-lg-8  p-5 ' style="margin-left:15%; margin-right:20%;">
+                    <h2 style="text-align: center; margin-bottom: 70px;">Vui lòng điền đầy đủ thông tin dưới đây</h2>
+                    <div style="display: flex;">
+                        <input type="text" id="hoten" name="hoten" placeholder="   Họ và tên" style="width: 50%; height: 40px;margin-right: 10%">
+                        <input type="text" id="diachi" name="diachi" placeholder="   Địa chỉ" style="width: 50%; height: 40px">
+
+                    </div>
+                    <div style="display: flex;margin-top: 20px">
+                        <div id="form_tinh" class="input_form" style="width: 50%; margin-right: 10%;">
+                            <label for="tinh">Vùng/Miền</label>
+                            <select class="form-control" id="tinh" style="outline: none;">
+                                <option value="bac">Bắc</option>
+                                <option value="trung">Trung</option>
+                                <option value="nam">Nam</option>
+                            </select>
+                        </div>
+                        <div id="form_vitri" class="input_form" style="width: 50%;">
+                            <label for="vitri">Vị trí</label>
+                            <select class="form-control" id="vitri" style="outline: none;">
+                                <option value="bac">Phòng giao dịch</option>
+                                <option value="trung">Phòng kế toán</option>
+                                <option value="nam">Phòng nhân sự</option>
+                                <option value="bac">Phòng kế hoạch</option>
+                                <option value="trung">Phòng hành chính</option>
+                                <option value="nam">Phòng kiểm soát</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="display: flex;margin-top: 30px">
+                        <input type="date" id="ngaysinh" name="ngaysinh" placeholder="   Ngày sinh" style="width: 50%; height: 40px;margin-right: 10%">
+                        <input type="text" id="cmtnd" name="cmtnd" placeholder="   CMTND" style="width: 50%; height: 40px">
+                    </div>
+                    <div style="display: flex;margin-top: 30px; ">
+                        <div style="margin-right: 10%;">
+                            <p>Ảnh CMT:</p>
+                            <input type="file" id="file" name="file" size="50" accept="image/*" onchange="readURL(this, '#cmtnd1');" style="width: 10">
+                            <div style="margin-top: 15px;">
+                                <input type="file" id="file" name="file" size="50" accept="image/*" onchange="readURL(this, '#cmtnd2');" style="width: 10">
+                                <img id='cmtnd1' value='' src="#" alt="" style="width: 100%; margin-top: 10px;">
+                                <img id='cmtnd2' value='' src="#" alt="" style="width: 100%; margin-top: 10px;">
+                            </div>
+                        </div>
+                        <div>
+                            <p>Ảnh Avatar:</p>
+                            <input type="file" id="file" name="file" size="50" accept="image/*" onchange="readURL(this, '#avt');" style="width: 10">
+                            <div style="margin-top: 15px;">
+                                <img id='avt' value='' src="#" alt="" style="width: 100%;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-left: 35%; margin-top: 60px;">
+                        <button id="btn_submit" class="btn btn-primary" value="Submit" style="width: 50%;height: 40px">
+                            Submit
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>
+    </div>
+    <div style="background-color: #2d3436">
+        <div class="container mt-5 footer  ">
+            <div class='row'>
+                <div class='col-xl-3 col-sm-6 pt-3 el'>
+                    <span class='tf_name' style="text-align: center; width: 100%;">About us</span>
+                    <p>
+                        Những con ong chăm chỉ cần mẫn học code và không tiến bộ nổi. Ngày qua ngày chúng tôi lại cùng nhau lên mạng lục tung cái google để tìm một cái gì đó cũng không biết nữa. Và kết quả sau bảy bảy bốn chín ngày chúng tôi tu thành chính quả và tạo nên cái
+                        trang web này. Mong các bạn đọc hãy ủng hộ cả team nhé.
+                    </p>
+                </div>
+                <div class="col-xl-3 col-sm-6 pt-3 el" style="text-align: center;">
+
+                    <span class='tf_name'>Support</span>
+                    <ul>
+                        <li style="cursor: pointer; ">
+                            FAQ
+                        </li>
+                        <li style="cursor: pointer;">
+                            Privacy Policy
+                        </li>
+                        <li style=" cursor: pointer;">
+                            Terms
+                        </li>
+                        <li style="cursor: pointer;">
+                            Introduce Team
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function readURL(input, id) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+
+                    $(id).attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+
+        }
+        $(document).ready(function() {
+
+            $("#btn_submit").click(function() {
+                var infor = {}
+
+                let url = window.location.href;
+
+                let tmp = url.split("/");
+                let id = tmp[tmp.length - 1];
+
+                infor["id"] = "" + id;
+                infor["hoten"] = $("#hoten").val();
+
+                infor["diachi"] = $("#diachi").val();
+
+                infor["tinh"] = $("#tinh option:selected").text();
+
+                infor["vitri"] = $("#vitri option:selected").text();
+
+                infor["cmtnd"] = $("#cmtnd").val();
+                infor["ngaysinh"] = $("#ngaysinh").val();
+                infor["cmtnd1"] = $("#cmtnd1").attr('src');
+
+                infor["cmtnd2"] = $("#cmtnd2").attr('src');
+                infor["avt"] = $("#avt").attr('src');
+
+
+                $.ajax({
+                    type: "POST",
+                    url: "/save_infor",
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify(infor),
+                    dataType: 'json',
+                    success: function(response) {
+
+                        alert(response['status']);
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+
+                });
+
+            });
+
+        });
+    </script>
+</body>
+
+</html>

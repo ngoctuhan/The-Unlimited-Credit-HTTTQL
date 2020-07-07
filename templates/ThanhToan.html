@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThanhToan</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <!-------------------CSS here!--------------------->
+    <style>
+        #infor_tt {
+            width: 600px;
+            margin-left: 270px;
+            margin-top: 25px;
+            padding-top: 15px;
+            padding-left: 15px;
+            position: relative;
+            font-size: 16px;
+            box-shadow: 5px 10px #bdc3c7;
+            border: 1px solid #7f8c8d;
+            background-color: #f0f2f3;
+        }
+        
+        #infor_tt p {
+            width: 400px;
+        }
+        
+        .btn_tt {
+            position: absolute;
+            top: 80px;
+            right: 60px;
+            background-color: #2980b9;
+            border: none;
+            color: white;
+            height: 30px;
+            width: 130px;
+            border-radius: 5px;
+            outline: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light  border" style="background-color:#EE0000   ">
+        <a class="navbar-brand" href="#" style="font-weight: 700;color: white;">The Unlimited</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto list-item-nav" style="font-weight: 600;">
+                <li class="nav-item active mr-4">
+                    <a class="nav-link" href="#" style="color: white;">Sản phẩm</a>
+                </li>
+                <li class="nav-item mr-4">
+                    <a class="nav-link" href="#" style="color: white;">Thanh toán</a>
+                </li>
+                <li class="nav-item mr-4">
+                    <div class="btn-group nav-link">
+                        <a type="button" style="color: white;">
+                            Tư vấn và tra cứu
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item mr-4">
+                    <div class="btn-group nav-link">
+                        <a type="button" class=" dropdown-toggle" data-toggle="dropdown" style="color: white;">
+                        Tin tức
+                        </a>
+                        <div class="dropdown-menu" style="background-color:#EE0000   ">
+                            <a class="dropdown-item" href="#" style="color: white;">Khuyến mãi</a>
+                            <a class="dropdown-item" href="#" style="color: white;">Tin tức truyền thông</a>
+                            <a class="dropdown-item" href="#" style="color: white;">Video, clip</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item mr-4">
+                    <div class="btn-group nav-link">
+                        <a type="button" class=" dropdown-toggle" data-toggle="dropdown" style="color: white;">
+                        Về chúng tôi
+                        </a>
+                        <div class="dropdown-menu" style="background-color:#EE0000   ">
+                            <a class="dropdown-item" href="#" style="color: white;">Liên hệ</a>
+                            <a class="dropdown-item" href="#" style="color: white;">Tuyển dụng</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <div class="container" style="text-align: center;">
+
+        <h3 class='mt-4' id="title" style="color:#e74c3c; font-weight:600">HỢP ĐỒNG CỦA TÔI</h3>
+
+        <div id='notice' class="mt-4 mb-4">
+            <h5>Bạn chưa có hợp đồng nào được tạo!</h5>
+        </div>
+
+
+    </div>
+
+
+    <div class="modal-body border" style="text-align: center;">
+        <h3 id="modal_title" style="color:#d35400">HƯỚNG DẪN THANH TOÁN</h3>
+        <div class="hdtt">
+
+
+            <h5 class="httt">1. Thanh Toán Qua Bưu Điện</h5>
+            <p> <b>Nội dung thanh toán:</b> Thanh toán tiền cho hợp đồng số...của...</p>
+
+            <h5 id="httt2 " class="httt ">2. Thanh Toán Qua Ngân Hàng</h5>
+            <p> <b>Người thụ hưởng</b> Công ty tài chính The Unlimited</p>
+            <p><b>Số tài khoản</b> vui lòng ghi chính xác một trong các tài khoản dưới đây</p><br>
+
+            <table class="table table-bordered ">
+                <thead>
+                    <tr style="background-color:#EE0000 ; color:white; text-align: center;">
+                        <th>BIDV</th>
+                        <th>VIETCOMBANK</th>
+                        <th>SACOMBANK</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr style="text-align: center; font-size: 17px; font-weight: 600;">
+                        <td>0321-0258-3544 <br> Tại BIDV, CN Hà Đông</td>
+                        <td>0231-5684-2387 <br> Tại Vietcombank, CN Hoàn kiếm</td>
+                        <td>0567-8954-3254 <br> Tại Sacombank, CN Tân định</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+    <script>
+        $(document).ready(function() {
+
+            let curent_url = window.location.href;
+
+            let id = curent_url.split('/');
+
+            id = id[id.length - 1];
+
+            // alert(id);
+            $.ajax({
+
+                type: "GET",
+                url: "/dataHopDong/" + id,
+                contentType: "application/json;charset=utf-8 ",
+                data: "data",
+                dataType: 'json',
+                success: function(data) {
+
+
+                    if (data["HopDongTTD"].length == 0) {
+                        $("#notice").show();
+                    }
+                    if (data["HopDongTG"].length == 0) {
+                        $("#notice").show();
+                    }
+                    if (data["HopDongTTD"].length > 0) {
+
+                        $("#notice").hide();
+
+                        var form_ttd = '<div class="infor_tt3 mb-3 border" id="infor_tt">';
+                        form_ttd += '<p><span>Số thẻ : </span>' + data["HopDongTTD"]["0"][6] + '</p>';
+                        form_ttd += '<p><span>Ngày mở thẻ :</span>' + data["HopDongTTD"]["0"][1] + '</p>';
+                        form_ttd += '<p><span>Thời hạn hợp đồng :</span>' + data["HopDongTTD"]["0"][4] + 'tháng</p>';
+                        form_ttd += '<p><span>Hạn mức chi tiêu :</span>' + data["HopDongTTD "]["0"][5] + '</p>';
+                        form_ttd += '<button class="btn_tt " id="btn_tt3" >Thanh Toán</button>';
+                        form_ttd += '</div>';
+
+                        $(".container").append(form_ttd);
+
+                        $("#btn_tt3").click(function() {
+                            alert("Thanh Toán Thành Công! ")
+                        });
+
+                    }
+
+                    if (data["HopDongTG"].length > 0) {
+
+
+                        $("#notice").hide();
+                        var form_ttd = '<div class="infor_tt3 mb-3 border" id="infor_tt">';
+                        form_ttd += '<p><span>Tên sản phẩm : </span>' + data["HopDongTG"]["0"][2] + '</p>';
+                        form_ttd += '<p><span>Ngày mở hợp đồng :</span>' + data["HopDongTG"]["0"][1] + '</p>';
+                        form_ttd += '<p><span>Thời hạn hợp đồng :</span>' + data["HopDongTG"]["0"][4] + 'tháng</p>';
+                        form_ttd += '<p><span>Lãi suất :</span>' + data["HopDongTG"]["0"][7] + '%</p>';
+                        form_ttd += '<button class="btn_tt mb-2" id="btn_tt2">Thanh Toán</button>';
+                        form_ttd += '</div>';
+
+                        $(".container").append(form_ttd);
+
+                        $("#btn_tt2").click(function() {
+                            alert("Thanh Toán Thành Công! ")
+                        });
+
+                    }
+
+                }
+
+            });
+
+
+
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Unlimited</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- <link rel="stylesheet" href="{{url_for('static', filename='css/taohosoKH.css') }}"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lanh.css') }}">
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- <link rel="stylesheet" href="lanh.css"> -->
+
+    <style>
+        #valid_null {
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="container-fluid navbar navbar-expand-sm  row top-web">
+
+        <div class='col-4 name-website pl-2'>
+            <img src="{{url_for('static', filename='icons/signs.png') }}" alt="" srcset="">
+            <span class='pl-3'>Tạo hồ sơ khách hàng</span>
+        </div>
+
+        <div class="">
+
+        </div>
+    </nav>
+    <div class='container-fluid include row pr-0'>
+
+        <div class=' left  menu-left  col-2 pr-0' style="margin-right: 0px; background-color: rgb(21, 32, 54);">
+
+            <ul nav flex-column>
+                <li class="nav-item" style="border-top:1px solid #34495e;">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                    <a class="nav-link  " href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <a id='ttcn' class="nav-link" href="#">Thông tin cá nhân</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    <a id='taohopdong' class="nav-link" href="">Tạo hợp đồng trả góp</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                    <a id='thongke' class="nav-link " href="">Thống kê</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-address-book" aria-hidden="true"></i>
+                    <a id='taohoso' class="nav-link " href="#">Tạo hồ sơ khách hàng</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-credit-card" aria-hidden="true"></i>
+                    <a id='thetindung' class="nav-link " href="#">Mở thẻ tính dụng</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    <a class="nav-link disabled" href="#">Setting</a>
+                </li>
+            </ul>
+
+        </div>
+        <div class='col-10 m-0 p-0 ' style="background-color: #273c75; min-height: 630px; color: white;">
+
+
+            <div class='row mt-5' style="margin-left: 80px;">
+
+                <div id="name_form " class="input_form col-6">
+
+                    <input id="hoten" class="form-control" type="text" placeholder="Họ và tên" style="width:70%">
+
+                    <p id="valid_null">Không được bỏ trống!</p>
+                </div>
+
+                <div id="date_form" class="input_form col-6 ">
+
+                    <input type="date" class="form-control" id="date" name="date" style="width:70%">
+                    <p id="valid_null">Không được bỏ trống!</p>
+                </div>
+            </div>
+
+            <div class='row mt-5' style="margin-left: 80px;">
+                <div id="phone_number" class="input_form col-6">
+
+                    <input id="phone" type="text" class="form-control" style="width:70%" placeholder="Số điện thoại">
+                    <p id="valid_null">Không được bỏ trống!</p>
+                    <!-- <p class="int_sdt" id="valid_int">Yêu cầu chỉ chữ số</p> -->
+
+                </div>
+
+                <div id="email_form" class="input_form col-6">
+
+                    <input id="email" type="text" class="form-control" style="width:70%" placeholder="Email">
+                    <p id="valid_null">Không được bỏ trống!</p>
+                </div>
+            </div>
+
+            <div class='row mt-5' style="margin-left: 80px;">
+                <div id="cmt_form" class="input_form col-6">
+
+                    <input id="cmt" type="text" class="form-control " style="width:70%" placeholder="Số CMTND">
+                    <p id="valid_null">Không được bỏ trống!</p>
+                    <!-- <p class="int_cmt" id="valid_int">Yêu cầu chỉ chữ số</p> -->
+                </div>
+
+                <div id="thu_nhap" class="slidecontainer col-6">
+
+                    <input type="range" min="1" max="100" value="10" class="slider" id="myRange" class="form-control" style="width:70%" style="background-color: #fbc531;">
+                    <p><span id="demo"></span> Triệu</p>
+                </div>
+            </div>
+
+            <div class='row mt-3' style="margin-left: 80px;">
+
+                <div id="address_form" class="input_form col-6">
+
+                    <input id="dia_chi" type="text" class="form-control " placeholder="Địa chỉ" style="width:70%">
+                    <p id="valid_null">Không được bỏ trống!</p>
+                </div>
+
+                <div id="form_tinh" class="input_form col-6">
+
+                    <div style="width:70%">
+                        <select class="form-control" id="tinh" style="outline: none;" class="form-control " placeholder="Vùng/miền">
+                        <option value="Bắc">Bắc</option>
+                        <option value="Trung">Trung</option>
+                        <option value="Nam">Nam</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <button id="btn_profile" type="button" class="btn btn btn-warning mt-5" style="margin-left: 35%; width:30%; font-weight:600">TẠO HỒ SƠ</button>
+            <!-- </form> -->
+
+        </div>
+    </div>
+    <!-----------form input------------>
+
+    <!----js here----->
+
+    <script>
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("demo");
+        output.innerHTML = slider.value;
+
+        slider.oninput = function() {
+            output.innerHTML = this.value;
+        }
+
+        $(document).ready(function() {
+
+            $("#ttcn").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/staff/' + id_nv;
+
+                $("#ttcn").attr("href", url);
+
+            });
+
+            $("#taohopdong").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/taohopdong/' + id_nv;
+
+
+
+                $("#taohopdong").attr("href", url);
+
+            });
+
+            $("#thongke").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/thongke/' + id_nv;
+
+
+
+                $("#thongke").attr("href", url);
+
+            });
+
+            $("#taohoso").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/taohoso/' + id_nv;
+
+
+
+                $("#taohoso").attr("href", url);
+
+            });
+            $('#btn_profile').click(function() {
+
+                var kt = 1;
+
+                // show canh bao
+                if (($("#hoten").val() == "")) {
+                    $("#hoten").next().show();
+                    kt = 0;
+                } else $("#hoten").next().hide();
+
+                if (($("#date").val() == "")) {
+                    $("#date").next().show();
+                    kt = 0;
+                } else $("#date").next().hide();
+
+                if (($("#phone").val() == "")) {
+                    $("#phone").next().show();
+                    kt = 0;
+                } else $("#phone").next().hide();
+
+                if (($("#email").val() == "")) {
+                    $("#email").next().show();
+                    kt = 0;
+                } else $("#email").next().hide();
+
+                if (($("#cmt").val() == "")) {
+                    $("#cmt").next().show();
+                    kt = 0;
+                } else $("#cmt").next().hide();
+
+                if (($("#dia_chi").val() == "")) {
+                    $("#dia_chi").next().show();
+                    kt = 0;
+                } else $("#dia_chi").next().hide();
+
+                if (kt == 1) {
+
+                    var profile = {}
+                    var KhachHang = {}
+
+                    profile["hoten"] = $("#hoten").val();
+                    // profile["gtinh"] = $("select.form-control").children("option:selected").val();
+                    profile["ngaysinh"] = $("#date").val();
+                    profile["sdt"] = $("#phone").val();
+                    profile["email"] = $("#email").val();
+                    profile["cmt"] = $("#cmt").val();
+                    profile["dia_chi"] = $("#dia_chi").val();
+                    profile["tinh"] = $("#tinh").children("option:selected").val();
+                    KhachHang["luong"] = $("#myRange").val();
+
+
+
+                    // alert("luong" + KhachHang["luong"]);
+                    $.ajax({
+                        type: "POST",
+                        url: "http://192.168.16.100:5000/dataHoSo",
+                        contentType: "application/json;charset=utf-8",
+                        data: JSON.stringify(profile),
+                        dataType: 'json',
+                        success: function(response) {
+                            // alert("da vao");
+                            if (response['check_email'] != null)
+                                alert(response['check_email']);
+
+                            KhachHang["id_tv"] = response['id_tv'];
+
+                            let username = response['username'];
+                            let password = response['password'];
+                            // alert("da vao" + response['id_tv'])
+                            $.ajax({
+
+                                type: "POST",
+                                url: "http://192.168.16.100:5000/dataKhachHang",
+                                contentType: "application/json;charset=utf-8",
+                                data: JSON.stringify(KhachHang),
+                                dataType: 'json',
+                                success: function(response) {
+
+                                    alert(response['status'] + " " + "Username: " + username + " Password: " + password);
+
+                                }
+
+                            });
+                        },
+                        error: function(error) {
+                            console.log(error);
+                        }
+
+                    });
+
+                }
+
+            });
+        });
+    </script>
+
+</body>
+
+</html>

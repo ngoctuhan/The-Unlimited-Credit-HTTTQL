@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThanhToan</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="/static/css/LoTrinhThanhToan.css"> -->
+
+    <!--------------CSS here------------>
+    <style>
+        body {
+            font-family: Roboto, sans-serif;
+            color: #4f4f4f;
+            /* background-color: #f0f2f3; */
+            margin-bottom: 50px;
+        }
+        
+        .container {}
+        
+        h3 {
+            margin-left: 270px;
+            margin-bottom: 35px;
+            border-bottom: 1px solid #2980b9;
+            width: 400px;
+        }
+        
+        nav {
+            margin-bottom: 60px;
+        }
+        
+        #infor_tt {
+            width: 600px;
+            /* margin-left: 270px; */
+            margin-top: 25px;
+            padding-top: 15px;
+            padding-left: 15px;
+            position: relative;
+            font-size: 16px;
+            box-shadow: 5px 10px #bdc3c7;
+            border: 1px solid #7f8c8d;
+            background-color: #f0f2f3;
+        }
+        
+        #infor_tt p {
+            width: 400px;
+        }
+        
+        .btn_tt {
+            position: absolute;
+            top: 60px;
+            right: 40px;
+            background-color: #2980b9;
+            border: none;
+            color: white;
+            height: 40px;
+            width: 130px;
+            border-radius: 5px;
+            outline: none;
+        }
+        
+        span {
+            font-weight: bold;
+        }
+        
+        #myModal_TG {
+            border-radius: 20px;
+        }
+        
+        .modal-dialog {
+            max-width: 850px;
+            border-radius: 20px;
+        }
+        
+        .modal-body {
+            padding: 40px 40px 30px 40px;
+        }
+        
+        .modal-title {
+            margin-left: 300px;
+            color: white;
+        }
+        
+        .modal-header {
+            background-color: #ee0000;
+        }
+        
+        .httt {
+            /* text-align: center; */
+            margin: 0px 30px 0px 30px;
+            color: #2980b9;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        #httt2 {
+            margin-top: 50px;
+        }
+        
+        .hdtt p {
+            margin-left: 30px;
+        }
+        
+        .table {
+            text-align: center;
+            width: 558px;
+            margin: 0px 30px 20px 30px;
+        }
+        
+        .table thead {
+            background-color: #2980b9;
+            color: white;
+        }
+        
+        #table_ttTG {
+            margin-top: 40px;
+        }
+        
+        #tb_contentTG {
+            text-align: left;
+            width: 700px;
+        }
+        
+        #title_TG {
+            background-color: #ee0000;
+            text-align: center;
+            color: white;
+        }
+        
+        #content_tt td {
+            margin-left: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border">
+        <a class="navbar-brand" href="#" style="font-weight: 600;">The Unlimited</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto list-item-nav" style="font-weight: 600;">
+                <li class="nav-item active mr-4">
+                    <a class="nav-link" href="#">Trang chủ<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item mr-4">
+                    <a class="nav-link" href="#">Danh bạ</a>
+                </li>
+                <li class="nav-item mr-4">
+                    <a class="nav-link" href="#">Tạo tài khoản</a>
+                </li>
+                <li class="nav-item mr-4">
+                    <a class="nav-link" href="#">Đánh giá nhân viên</a>
+                </li>
+                <li class="nav-item mr-4">
+                    <a class="nav-link" href="#">Góp ý kiến</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container">
+
+        <h3 id="title">Theo Dõi Lộ Trình Thanh Toán</h3>
+
+
+
+    </div>
+
+    <div class="modal" id="myModal_TG">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Lộ Trình Thanh Toán</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div id="TG_Content" class="modal-body">
+                    <div id="table_ttTG">
+                        <table id="tb_contentTG" class="table table-bordered">
+                            <tr id="title_TG">
+                                <th>Tháng</th>
+                                <th>Lộ Trình Thanh Toán</th>
+                                <th>Trạng Thái</th>
+                                <th>Thanh Toán</th>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal" id="myModal_TTD">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Lộ Trình Thanh Toán</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div id="TTD_Content" class="modal-body">
+
+                    <div id="table_ttTTD">
+                        <table id="tb_contentTTD" class="table table-bordered">
+                            <tr id="title_TTD">
+                                <th>Tháng</th>
+                                <th>Lộ Trình Thanh Toán</th>
+                                <th>Trạng Thái</th>
+                                <th>Thanh Toán</th>
+                            </tr>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-------js here-------->
+        <script>
+            function event_click(i) {
+
+                // var i = data_add_tt["index"];
+                var ctt = "#ctt" + i;
+                var dtt = "#dtt" + i;
+                var sttt = "#sttt" + i;
+                var stcn = "#stcn" + i;
+                var ntt = "#ntt" + i;
+                var hdt = "#hdt" + i;
+                // soThangChuaTT = data["HopDongTG"][0][4] - (dataThanhToan["ThanhToanTG"]).length;
+                alert("Thanh Toán Thành Công!");
+
+                data_add_tt["thang"] = ((soThangChuaTT - 1) + i);
+                // data_add_tt[]
+
+                $(ctt).hide();
+                $(dtt).show();
+                $(sttt).show();
+                $(stcn).show();
+                $(ntt).show();
+                $(hdt).hide();
+                console.log(data_add_tt);
+
+                $.ajax({
+                    type: "POST",
+                    url: "/addthanhtoanTG",
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify(data_add_tt),
+                    dataType: 'json',
+                    success: function(dataThanhToan) {}
+
+                });
+            }
+            $(document).ready(function() {
+
+                let curent_url = window.location.href;
+
+                let id = curent_url.split('/');
+
+                id = id[id.length - 1];
+
+                $.ajax({
+
+                    type: "GET",
+                    url: "/dataHopDong/" + id,
+                    contentType: "application/json;charset=utf-8",
+                    data: "data",
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log(data)
+
+                        if (data["HopDongTTD"] != null) {
+                            // alert(data["HopDongTTD"]["0"][1].toString())
+                            var form_ttd = '<div class="infor_tt3" id="infor_tt">';
+                            form_ttd += '<p><span>Số thẻ :</span>' + data["HopDongTTD"]["0"][6] + '</p>';
+                            form_ttd += '<p><span>Ngày mở thẻ :</span>' + data["HopDongTTD"]["0"][1] + '</p>';
+                            form_ttd += '<p><span>Thời hạn hợp đồng :</span>' + data["HopDongTTD"]["0"][4] + 'tháng</p>';
+                            form_ttd += '<p><span>Hạn mức chi tiêu :</span>' + data["HopDongTTD"]["0"][5] + '</p>';
+                            form_ttd += '<button class="btn_tt" id="btn_TTD">Lộ Trình Thanh Toán</button>';
+                            form_ttd += '</div>';
+
+                            $("#title").append(form_ttd);
+
+                        }
+
+                        if (data["HopDongTG"] != null) {
+                            var form_ttd = '<div class="infor_tt3" id="infor_tt">';
+                            form_ttd += '<p><span>Tên sản phẩm :</span>' + data["HopDongTG"]["0"][2] + '</p>';
+                            form_ttd += '<p><span>Ngày mở hợp đồng :</span>' + data["HopDongTG"]["0"][1] + '</p>';
+                            form_ttd += '<p><span>Thời hạn hợp đồng :</span>' + data["HopDongTG"]["0"][4] + 'tháng</p>';
+                            form_ttd += '<p><span>Lãi suất :</span>' + data["HopDongTG"]["0"][7] + '%</p>';
+                            form_ttd += '<button class="btn_tt" id="btn_TG" data-toggle="modal" data-target="#myModal_TG">Lộ Trình Thanh Toán</button>';
+                            form_ttd += '</div>';
+
+                            $("#title").append(form_ttd);
+                        }
+
+
+                        $.ajax({
+                            type: "POST",
+                            url: "/dataThanhToan/" + id,
+                            contentType: "application/json;charset=utf-8",
+                            data: JSON.stringify(data),
+                            dataType: 'json',
+                            success: function(dataThanhToan) {
+                                console.log(dataThanhToan)
+                                    // console.log(dataThanhToan["ThanhToanTTD"][0][2])
+
+                                if (dataThanhToan["ThanhToanTG"] != null) {
+                                    for (var i = 0; i < (dataThanhToan["ThanhToanTG"]).length; i++) {
+                                        var tien_no = data["HopDongTG"][0][3] - data["HopDongTG"][0][5] - i * data["HopDongTG"]["0"][6];
+
+                                        var form_ttd = '<tr id = "content_tt">';
+                                        form_ttd += '<td style = "margin-left: 10px;">' + dataThanhToan["ThanhToanTG"][i][2] + '</td>';
+                                        form_ttd += '<td>';
+                                        form_ttd += '<p> <b>Ngày thanh toán: </b>' + dataThanhToan["ThanhToanTG"][i][1] + '</p>';
+                                        form_ttd += '<p> <b> Số tiền cần đóng: </b>' + data["HopDongTG"][0][6] + '</p>';
+                                        form_ttd += '<p> <b>Số tiền thanh toán:</b>' + dataThanhToan["ThanhToanTG"][i][3] + '</p>';
+                                        form_ttd += '<p><b>Số tiền còn nợ: </b>' + tien_no + '</p>';
+                                        form_ttd += '</td>';
+
+                                        if (dataThanhToan["ThanhToanTG"][i][3] != 0) form_ttd += '<td style = "color: #27ae60; font-weight: bold;"><br><br><br> Đã thanh toán</td>';
+                                        else form_ttd += '<td><br><br><br> Chưa thanh toán</td>';
+
+                                        form_ttd += '<td><br><br><button id = "btn_ltt' + i + '" type="button" class="btn btn-primary">Thanh Toán</button></td>';
+                                        form_ttd += '</tr>';
+
+                                        $("#tb_contentTG").append(form_ttd);
+
+                                        // var strtmp = "#btn_ltt" + i;
+                                        // $(strtmp).click(function () {
+                                        //     alert("Thanh Toán Thành Công!")
+
+                                        // });
+                                    }
+
+                                    console.log(tien_no);
+
+                                    soThangChuaTT = data["HopDongTG"][0][4] - (dataThanhToan["ThanhToanTG"]).length;
+                                    if (soThangChuaTT > 0) {
+                                        var dem = 1;
+                                        for (var i = 0; i < soThangChuaTT; i++) {
+
+                                            tien_no = tien_no - data["HopDongTG"][0][6];
+                                            var temp = data["HopDongTG"][0][1].split("-");
+                                            if ((parseInt(temp[1]) + soThangChuaTT - 1 + i) < 10)
+                                                var han_tt = temp[0] + "-0" + (parseInt(temp[1]) + soThangChuaTT - 1 + i) + "-" + temp[2];
+                                            else
+                                                var han_tt = temp[0] + "-" + (parseInt(temp[1]) + soThangChuaTT - 1 + i) + "-" + temp[2];
+
+                                            var today = new Date();
+                                            var date = today.getFullYear() + '-0' + (today.getMonth() + 1) + '-0' + today.getDate();
+                                            // var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                                            // var dateTime = date + ' ' + time;
+
+                                            data_add_tt = {}
+                                            data_add_tt["date"] = date;
+                                            // data_add_tt["thang"] = ((soThangChuaTT - 1) + i);
+                                            data_add_tt["sotien"] = data["HopDongTG"]["0"][6];
+                                            data_add_tt["noidung"] = "đã thanh toán tháng thứ " + data_add_tt["thang"];
+                                            data_add_tt["khachhangid"] = data["HopDongTG"]["0"][8];
+                                            data_add_tt["HDTGid"] = data["HopDongTG"]["0"][0];
+                                            data_add_tt["index"] = i;
+
+                                            var form_tG = '<tr>';
+                                            form_tG += '<td><br><br>' + ((dataThanhToan["ThanhToanTG"]).length + dem) + '</td>';
+                                            form_tG += '<td>';
+                                            form_tG += '<p id = "hdt' + i + '"><b>Hạn đóng tiền:</b>' + han_tt + '</p>';
+                                            form_tG += '<p id = "ntt' + i + '" style = "display: none;"> <b>Ngày thanh toán: </b>' + date + '</p>';
+                                            form_tG += '<p><b>Số tiền cần đóng:</b>' + data["HopDongTG"][0][6] + '</p>';
+                                            form_tG += '<p id = "sttt' + i + '" style = "display: none;"><b>Số tiền thanh toán:</b>' + data["HopDongTG"]["0"][6] + '</p>';
+                                            form_tG += '<p id = "stcn' + i + '" style = "display: none;"><b>Số tiền còn nợ:</b>' + tien_no + '</p>';
+                                            form_tG += '</td>';
+                                            form_tG += '<td id = "ctt' + i + '" style = "color: red; font-weight: bold;"><br> Chưa thanh toán</td>';
+                                            form_tG += '<td id = "dtt' + i + '" style = "color: #27ae60; font-weight: bold; display: none;"><br> Đã thanh toán</td>';
+                                            form_tG += '<td><br><button id = "btn_lttt' + i + '" type="button" class="btn btn-primary" onclick = "event_click(' + i + ')">Thanh Toán</button></td>';
+                                            form_tG += '</tr>';
+                                            dem++;
+                                            $("#tb_contentTG").append(form_tG);
+
+                                        }
+
+                                    }
+
+                                }
+
+                            }
+                        });
+                    }
+
+                });
+
+
+            });
+        </script>
+
+</body>
+
+</html>

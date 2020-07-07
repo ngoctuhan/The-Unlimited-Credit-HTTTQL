@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo hợp đồng</title>
+    <link rel="icon" type="image/ico" href="{{ url_for('static', filename='icons/signs.png') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lanh.css') }}">
+
+    <!-- Chart by js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <script>
+        $(document).ready(function() {
+
+            $("#ttcn").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/staff/' + id_nv;
+
+                $("#ttcn").attr("href", url);
+
+            });
+
+            $("#taohopdong").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/taohopdong/' + id_nv;
+
+
+
+                $("#taohopdong").attr("href", url);
+
+            });
+
+            $("#thongke").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/thongke/' + id_nv;
+
+                alert(url);
+
+                $("#thongke").attr("href", url);
+
+            });
+
+            $("#taohoso").click(function() {
+
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                url = 'http://192.168.16.100:5000/taohoso/' + id_nv;
+
+
+
+                $("#taohoso").attr("href", url);
+
+            });
+
+            $('#btn_them').click(function() {
+                let curr = window.location.href;
+
+                curr = curr.split('/');
+
+                let id_nv = curr[curr.length - 1];
+
+                var profile = {};
+                profile["id"] = id_nv;
+                profile["cmnd"] = $("#cmnd1").val();
+                profile["nmhd"] = $("#nmhd").val();
+                profile["tsp"] = $("#tsp").val();
+                profile["giatri"] = $("#giatri").val();
+                profile["thoihan"] = $("#thoihan").val();
+                profile["tratruoc"] = $("#tratruoc").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/datahosothem",
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify(profile),
+                    dataType: 'json',
+                    success: function(response) {
+                        $("#tbody").empty();
+                        if (response['status'] != 'no') {
+                            var tmp_data = response['data']
+                            for (let row_data in tmp_data) {
+                                var tmp_list = response['data'][row_data];
+                                var new_element = '<td> ' + tmp_list[0] + ' </td>';
+                                new_element += '<td> ' + tmp_list[1] + ' </td>';
+                                new_element += '<td> ' + tmp_list[2] + ' </td>';
+                                new_element += '<td> ' + tmp_list[3] + ' </td>';
+                                new_element += '<td> ' + tmp_list[4] + ' </td>';
+                                new_element += '<td> ' + tmp_list[5] + ' </td>';
+                                new_element = '<tr style="background-color: #273c75;">' + new_element;
+                                new_element += '</tr>';
+                                $("#tbody").append(new_element);
+                            }
+                        }
+                    }
+
+                });
+            });
+            $('#btn_tim').click(function() {
+                let hd = $("#input_tim").val();
+                $.ajax({
+                    type: "POST",
+                    url: "/datahoso",
+                    data: {
+                        hopdong: hd
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        $("#tbody").empty();
+                        if (response['status'] != 'no') {
+                            var tmp_data = response['data']
+                            for (let row_data in tmp_data) {
+                                var tmp_list = response['data'][row_data];
+                                var new_element = '<td> ' + tmp_list[0] + ' </td>';
+                                new_element += '<td> ' + tmp_list[1] + ' </td>';
+                                new_element += '<td> ' + tmp_list[2] + ' </td>';
+                                new_element += '<td> ' + tmp_list[3] + ' </td>';
+                                new_element += '<td> ' + tmp_list[4] + ' </td>';
+                                new_element += '<td> ' + tmp_list[5] + ' </td>';
+                                new_element = '<tr style="background-color: #273c75;">' + new_element;
+                                new_element += '</tr>';
+                                $("#tbody").append(new_element);
+                            }
+                        }
+                    }
+
+                });
+            });
+        });
+    </script>
+    <nav class="container-fluid navbar navbar-expand-sm  row top-web">
+
+        <div class='col-4 name-website pl-2'>
+            <img src="{{ url_for('static', filename='icons/signs.png') }}" alt="" srcset="">
+            <span class="pl-3">Thống kê doanh thu</span>
+        </div>
+    </nav>
+    <div class='container-fluid include row pr-0'>
+
+        <div class=' left  menu-left  col-2 pr-0' style="margin-right: 0px; min-height: 630px;">
+
+            <ul nav flex-column>
+                <li class="nav-item" style="border-top:1px solid #34495e;">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                    <a class="nav-link  " href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <a id='ttcn' class="nav-link" href="#">Thông tin cá nhân</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    <a id='taohopdong' class="nav-link" href="">Tạo hợp đồng trả góp</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                    <a id='thongke' class="nav-link " href="">Thống kê</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-address-book" aria-hidden="true"></i>
+                    <a id='taohoso' class="nav-link " href="#">Tạo hồ sơ khách hàng</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-credit-card" aria-hidden="true"></i>
+                    <a id='thetindung' class="nav-link " href="#">Mở thẻ tính dụng</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    <a class="nav-link disabled" href="#">Setting</a>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class=' menu-right col-10 p-0 m-0'>
+            <div class="form-inline my-5">
+                <input id="input_tim" class="form-control mr-sm-2" type="search" placeholder="Nhập CMND của khách hàng" aria-label="Search" style="width: 60%; height: 40px;margin-left: 12%">
+                <button id="btn_tim" class="btn btn-outline-success my-2 my-sm-0">Tìm</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#myModal" style="margin-left: 20px;">Thêm</button>
+                <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="body" style="margin-top: 10%; margin-left: 15%">
+                                <input id="cmnd1" type="text-align" placeholder="   Số CMND" style="width: 80%; height: 40px; margin-bottom: 20px;">
+                                <input id="nmhd" type="date" placeholder="   Ngày mở hợp đồng" style="width: 80%; height: 40px; margin-bottom: 20px;">
+                                <input id="tsp" type="text-align" placeholder="   Tên sản phẩm" style="width: 80%; height: 40px; margin-bottom: 20px;">
+                                <input id="giatri" type="text-align" placeholder="   Giá trị (đồng)" style="width: 80%; height: 40px; margin-bottom: 20px;">
+                                <input id="thoihan" type="text-align" placeholder="   Thời hạn" style="width: 80%; height: 40px;margin-bottom: 20px;">
+                                <input id="tratruoc" type="text-align" placeholder="   Trả trước" style="width: 80%; height: 40px;margin-bottom: 20px;">
+                            </div>
+
+                            <form class="modal-footer">
+                                <button id="btn_them" type="submit" class="btn btn-danger" data-dismiss="modal">OK</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row  pl-0 ml-0 mt-5 mr-0 pr-0">
+
+                <div class='col-md-12  mb-5  mr-0' style="padding-left: 10px; padding-right: 12px;">
+                    <div class='card ' style="margin-left: 15px; margin-right: 12px; ">
+                        <div class='card-header mr-0' style="background-color: #273c75;">
+                            <span style="padding-left: 25px; font-size: 20px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: 550;
+                            color: #ffff;">Danh sách hợp đồng</span>
+                        </div>
+                        <table class='table table-striped mb-0' style="color:  #ffff; text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;background-color: #273c75;">
+                            <thead style="background-color: #487eb0;">
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Họ và tên</th>
+                                    <th>CMND</th>
+                                    <th>Hạn mức (đồng)</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody">
+                                {%for row in data %}
+                                <tr style="background-color: #273c75;">
+                                    <td>{{row[0]}}</td>
+                                    <td>{{row[1]}}</td>
+                                    <td>{{row[2]}}</td>
+                                    <td>{{row[3]}}</td>
+                                    <td>{{row[4]}}</td>
+                                    <td>{{row[5]}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>

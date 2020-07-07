@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="icon" type="image/png" href="static/icons/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/fonts/iconic/css/material-design-iconic-font.min.css">
+
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="static/css/util.css">
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <!--===============================================================================================-->
+</head>
+
+<body>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100 p-t-85 p-b-20">
+
+                <span class="login100-form-title p-b-70">
+						Welcome
+					</span>
+                <span class="login100-form-avatar">
+						<img src="static/icons/avatar-01.jpg" alt="AVATAR">
+					</span>
+
+                <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate="Enter username">
+                    <input id='username' class="input100" type="text" name="username">
+                    <span class="focus-input100" data-placeholder="Username"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
+                    <input id='password' class="input100" type="password" name="pass">
+                    <span class="focus-input100" data-placeholder="Password"></span>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn login">
+							Login
+						</button>
+                </div>
+
+                <ul class="login-more p-t-190">
+                    <li class="m-b-8">
+                        <span class="txt1">
+								Forgot
+							</span>
+
+                        <a href="#" class="txt2">
+								Username / Password?
+							</a>
+                    </li>
+
+                    <li>
+                        <span class="txt1">
+								Don’t have an account?
+							</span>
+
+                        <a href="#" class="txt2">
+								Sign up
+							</a>
+                    </li>
+                </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="dropDownSelect1"></div>
+
+
+    <script src="static/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+
+            $(".login").click(function() {
+
+                var use = $("#username").val();
+                var pass = $("#password").val();
+
+                alert("đã click vào đây");
+                if (username === "" || password === "") {
+                    alert("Username/Password is empty");
+
+                } else {
+
+                    var acount = {};
+                    acount['username'] = use;
+                    acount['password'] = pass;
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/checklogin",
+                        contentType: "application/json;charset=utf-8",
+                        data: JSON.stringify(acount),
+                        dataType: 'json',
+                        success: function(response) {
+
+                            if (response['status'] != 'success') {
+                                alert(response['status']);
+                            } else {
+
+                                // alert(response['redirect']);
+                                window.location = response['redirect'];
+                            }
+                        },
+                        error: function(error) {
+                            console.log(error);
+                        }
+
+                    });
+
+                }
+
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
